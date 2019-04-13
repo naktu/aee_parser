@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup as Bs
 import requests
 
 SITE = "https://www.allearsenglish.com/episodes/"
@@ -22,7 +22,7 @@ def get_url(url):
 def main():
     page = get_url(SITE)
     if not page['status']:
-        soup = bs(page['data'], 'lxml')
+        soup = Bs(page['data'], 'lxml')
     else:
         exit(1)
     articles = soup.find_all('article', attrs={'class': 'post'})
