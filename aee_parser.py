@@ -23,7 +23,7 @@ def find_articles(page_result):
     if not page_result['status']:
         soup = Bs(page_result['data'], 'lxml')
     else:
-        return
+        return None
     articles = soup.find_all('article', attrs={'class': 'post'})
     return articles
 
