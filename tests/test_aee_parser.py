@@ -2,8 +2,9 @@ import unittest
 import os
 from aee_parser import get_url, find_articles
 
+print(os.getcwd())
 os.chdir(os.path.dirname(os.path.abspath(__name__)))
-
+print(os.getcwd())
 
 class TestGetUrl(unittest.TestCase):
     SITE = "https://www.allearsenglish.com/episodes/"
