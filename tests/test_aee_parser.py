@@ -9,16 +9,15 @@ class TestGetUrl(unittest.TestCase):
 
     def test_timeout(self):
         result = get_url(self.TIMEOUT)
-        self.assertDictEqual(result, {"status": 1, "data": "ConnectionError"})
+        self.assertIsNone(result)
 
     def test_status_code(self):
         result = get_url(self.STATUS_CODE)
-        self.assertDictEqual(result, {"status": 1, "data": 'Http error: 404'})
+        self.assertIsNone(result)
 
     def test_page_is_valid(self):
         result = get_url(self.SITE)
-        self.assertEqual(0, result['status'])
-        self.assertIsInstance(result['data'], str)
+        self.assertIsInstance(result, str)
 
 
 class TestFindArticles(unittest.TestCase):
@@ -26,20 +25,12 @@ class TestFindArticles(unittest.TestCase):
         page = f.read()
 
     def test_valid_data(self):
-        result = {
-            "status": 0,
-            "data": self.page
-        }
-        articles = find_articles(result)
+        articles = find_articles(self.page)
         self.assertIsInstance(articles, list)
         self.assertGreater(len(articles), 3)
 
     def test_not_valid_page_result(self):
-        result = {
-            "status": 1,
-            "data": "data"
-        }
-        articles = find_articles(result)
+        articles = find_articles(None)
         self.assertIs(articles, None)
 
 
