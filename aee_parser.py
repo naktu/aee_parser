@@ -33,6 +33,5 @@ def main():
     articles = find_articles(page_result)
 
 
-
 if __name__ == '__main__':
     main()
