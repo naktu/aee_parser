@@ -22,7 +22,7 @@ class TestGetUrl(unittest.TestCase):
 
 
 class TestFindArticles(unittest.TestCase):
-    with open("pages/page-2.html") as f:
+    with open("tests/pages/page-2.html") as f:
         page = f.read()
 
     def test_valid_data(self):
