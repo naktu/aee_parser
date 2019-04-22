@@ -7,12 +7,12 @@ SITE = "https://www.allearsenglish.com/episodes/"
 def get_url(url):
     status = 1
     try:
-        page = requests.get(url)
+        page = requests.get(url, timeout=10)
         page.raise_for_status()
         result = page.text
-    except requests.ReadTimeout():
-        result = "Timeout"
-    except requests.HTTPError:
+    except requests.exceptions.ConnectionError:
+        result = "ConnectionError"
+    except requests.exceptions.HTTPError:
         result = f"Http error: {page.status_code}"
     else:
         status = 0
