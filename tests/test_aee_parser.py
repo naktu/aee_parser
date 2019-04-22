@@ -1,10 +1,6 @@
 import unittest
-import os
 from aee_parser import get_url, find_articles
 
-print(os.getcwd())
-os.chdir(os.path.dirname(os.path.abspath(__name__)))
-print(os.getcwd())
 
 class TestGetUrl(unittest.TestCase):
     SITE = "https://www.allearsenglish.com/episodes/"
@@ -26,7 +22,7 @@ class TestGetUrl(unittest.TestCase):
 
 
 class TestFindArticles(unittest.TestCase):
-    with open("pages/page-2.html") as f:
+    with open("tests/pages/page-2.html") as f:
         page = f.read()
 
     def test_valid_data(self):
