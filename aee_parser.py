@@ -19,13 +19,19 @@ def get_url(url):
     return {"status": status, "data": result}
 
 
-def main():
-    page = get_url(SITE)
-    if not page['status']:
-        soup = Bs(page['data'], 'lxml')
+def find_articles(page_result):
+    if not page_result['status']:
+        soup = Bs(page_result['data'], 'lxml')
     else:
-        exit(1)
+        return
     articles = soup.find_all('article', attrs={'class': 'post'})
+    return articles
+
+
+def main():
+    page_result = get_url(SITE)
+    articles = find_articles(page_result)
+
 
 
 if __name__ == '__main__':
