@@ -1,3 +1,6 @@
+"""
+All Ears English podcast parser
+"""
 from bs4 import BeautifulSoup as Bs
 import requests
 
@@ -36,8 +39,12 @@ def find_articles(page):
 
 
 def main():
+    """
+    Main function
+    :return: None
+    """
     page_result = get_url(SITE)
-    articles = find_articles(page_result)
+    find_articles(page_result)
 
 
 if __name__ == '__main__':
