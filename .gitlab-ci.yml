@@ -1,0 +1,10 @@
+test:
+  script:
+  - apt-get update -qy
+  - apt-get install -y python-dev python-pip
+  - pip install -r requirements.txt
+  - pip install pylint
+  - pip install pycodestyle
+  - pycodestyle aee_parser.py
+  - pylint aee_parser.py
+  - pytest
