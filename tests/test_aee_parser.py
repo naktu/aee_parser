@@ -1,5 +1,8 @@
 import unittest
+import os
 from aee_parser import get_url, find_articles
+
+os.chdir(os.path.dirname(os.path.abspath(__name__)))
 
 
 class TestGetUrl(unittest.TestCase):
